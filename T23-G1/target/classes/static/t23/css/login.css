@@ -29,7 +29,7 @@ body {
 h1 {
     font-family: 'Roboto', sans-serif;
     font-size: 2.5rem;
-    color: rgb(174, 0, 0);
+    color: rgb(161, 0, 174);
     -webkit-text-stroke: 0.5px white;
     text-stroke: 0.5px white;
 }
