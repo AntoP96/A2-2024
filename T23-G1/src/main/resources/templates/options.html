@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title>Options Page</title>
+    <script th:src="@{/t23/js/options.js}"></script>
+  </head>
+
+
+<body class=bg-custom>
+    <div class="container">
+        <h1>Choose an option</h1>
+        <div class="mt-2 row">
+            <button id="historyButton" type="button" class="history-button" th:onclick="redirectToHistory()">Match history</button>
+            <button id="newGameButton" type="button" class="newGame-button" th:onclick="redirectToGame()">New Game</button>
+            <button id="rankingButton" type="button" class="ranking-button" th:onclick="">Ranking</button>
+            <button id="logoutButton" type="button" class="logout-button" th:onclick="redirectToLogin()">Logout</button>
+            
+        </div>
+    </div>
+<body>
+
+</html>
+
+

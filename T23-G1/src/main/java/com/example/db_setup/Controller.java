@@ -195,7 +195,7 @@ public class Controller {
         response.addCookie(jwtTokenCookie);
 
         try {
-            response.sendRedirect("/main");
+            response.sendRedirect(request.getContextPath() + "/options");
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -391,6 +391,13 @@ public class Controller {
         if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/main"); 
 
         return new ModelAndView("mail_register");
+    }
+
+    @GetMapping("/options")
+    public ModelAndView showOptionsForm(HttpServletRequest request, @CookieValue(name = "jwt", required = false) String jwt) {
+        if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/main"); 
+
+        return new ModelAndView("options");
     }
 
 
