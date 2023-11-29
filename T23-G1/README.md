@@ -1,7 +1,7 @@
 <h1> Testing Game </h1>
-<h2> Gruppo A2 </h2>
+<h2> Gruppo A2 2023/24</h2>
 <li>Antonio Paolino M63001394 antoni.paolino@studenti.unina.it </li>
-<li>Alberto Arola M63001438 marik.sasso@studenti.unina.it </li>
+<li>Alberto Arola M63001266 al.arola@studenti.unina.it </li>
 <li>Alfonso Esposito M63001406 alfonso.esposito17@studenti.unina.it </li>
 
 <h2> Gruppo 1 </h2>
@@ -25,7 +25,7 @@ All'atto della autenticazione, lo studente fornirà l'indirizzo e-mail fornito p
 <li>Utilizzare i comandi SQL per la gestione delle tabelle (<code>SELECT</code>, <code>DROP</code>, <code>SHOW TABLES </code>, ecc.) </li>
 
 <h2> Build nuove modifiche </h2>
-<li>1. Lanciare il comando `mvn clean install`</li>
-<li>2. Rimuovere il container `t23-g1-app-1` </li>
-<li>3. Lanciare la build dell'immagine: `docker compose up -d --build`</li>
+<li>1. Lanciare il comando <code>mvn clean install</code></li>
+<li>2. Rimuovere il container <code>t23-g1-app-1</code> </li>
+<li>3. Lanciare la build dell'immagine: <code>docker compose up -d --build</code></li>
 
