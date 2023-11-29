@@ -16,8 +16,14 @@
         </div>
         <div class="mt-2 row">
             <button id="historyButton" type="button" class="history-button" th:onclick="redirectToHistory()">Match history</button>
+            <div id="historyMsg">
+                <h2>Visualizza lo storico delle partite che hai giocato</h2>
+            </div>
             <button id="newGameButton" type="button" class="newGame-button" th:onclick="redirectToGame()">New Game</button>
             <button id="rankingButton" type="button" class="ranking-button" th:onclick="redirectToRanking()">Ranking</button>
+            <div id="rankingMsg">
+                <h2>Visualizza la classifica generale dei giocatori</h2>
+            </div>
         </div>
     </div>
 <body>

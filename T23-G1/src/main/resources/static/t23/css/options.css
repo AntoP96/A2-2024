@@ -50,19 +50,45 @@ h1 {
 .ranking-button:focus {
   outline: none; 
 }
-.history-button:hover{
+#historyMsg,
+#rankingMsg {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.history-button:hover + #historyMsg{
   background-color: white; 
   color: #3498db;
+  display: block;
 }
+
 .newGame-button:hover{
   background-color: white;
   color: #e74c3c;
 }
+.ranking-button:hover + #rankingMsg {
+  background-color: white;
+  color: #27ae60;
+  display: block;
+}
+
 .ranking-button:hover {
   background-color: white;
   color: #27ae60;
 }
-
+.history-button:hover {
+  background-color: white; 
+  color: #3498db;
+}
 .history-button {
   background-color: #3498db; /* Changed button color */
   color: #fff;

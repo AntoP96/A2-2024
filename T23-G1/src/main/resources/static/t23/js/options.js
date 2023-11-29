@@ -28,3 +28,25 @@ function redirectToHistory() {
 function redirectToRanking() {
   window.location.href = "/ranking";
 }
+
+document.getElementById('historyButton').addEventListener('mouseover', function() {
+  // Mostra la descrizione quando il mouse è sopra il bottone
+  document.getElementById('historyMsg').style.display = 'block';
+});
+
+// Aggiungi un listener per l'evento mouseout al bottone
+document.getElementById('historyButton').addEventListener('mouseout', function() {
+  // Nascondi la descrizione quando il mouse esce dal bottone
+  document.getElementById('historyMsg').style.display = 'none';
+});
+
+document.getElementById('rankingButton').addEventListener('mouseover', function() {
+  // Mostra la descrizione quando il mouse è sopra il bottone
+  document.getElementById('rankingMsg').style.display = 'block';
+});
+
+// Aggiungi un listener per l'evento mouseout al bottone
+document.getElementById('rankingButton').addEventListener('mouseout', function() {
+  // Nascondi la descrizione quando il mouse esce dal bottone
+  document.getElementById('rankingMsg').style.display = 'none';
+});
