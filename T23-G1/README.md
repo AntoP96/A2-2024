@@ -1,4 +1,8 @@
 <h1> Testing Game </h1>
+<h2> Gruppo A2 </h2>
+<li>Antonio Paolino M63001394 antoni.paolino@studenti.unina.it </li>
+<li>Alberto Arola M63001438 marik.sasso@studenti.unina.it </li>
+<li>Alfonso Esposito M63001406 alfonso.esposito17@studenti.unina.it </li>
 
 <h2> Gruppo 1 </h2>
 <li>Iole Morabito M63001448 i.morabito@studenti.unina.it </li>
