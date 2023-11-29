@@ -16,12 +16,12 @@ All'atto della autenticazione, lo studente fornirà l'indirizzo e-mail fornito p
 	<code>docker-compose up</code> viene utilizzato per avviare i servizi definiti in un file di configurazione <code>docker-compose.yml</code>. Viene creata l’immagine del container e viene eseguito il running.</li>
 <li>Per effettuare le richieste, aprire da browser le pagine tramite i path in locale (http://localhost:8080/register, http://localhost:8080/login, ecc.) </li>
 <li>Per visionare il popolamento delle tabelle del database, aprire un terminale ed eseguire i seguenti comandi:  
-	<code>docker exec –it g1-t2t3-app-1 bash</code> viene utilizzato per entrare all'interno di un container Docker in esecuzione e avviare una shell interattiva al suo interno. </li>  
+	<code>docker exec –it g1-t2t3-app-1 bash</code> viene utilizzato per entrare all'interno di un container Docker in esecuzione e avviare una shell interattiva al suo interno. 
 	<code>mysql –u root –p STUDENTSREPO</code>: viene utilizzato per accedere all'interfaccia della riga di comando di MySQL e connettersi al database <code>STUDENTSREPO</code> utilizzando l'utente <code>root</code> e richiedendo la password <code>password</code>. </li>
 <li>Utilizzare i comandi SQL per la gestione delle tabelle (<code>SELECT</code>, <code>DROP</code>, <code>SHOW TABLES </code>, ecc.) </li>
 
 <h2> Build nuove modifiche </h2>
-1. Lanciare il comando `mvn clean install`
-2. Rimuovere il container `t23-g1-app-1` 
-3. Lanciare la build dell'immagine: `docker compose up -d --build`
+<li>1. Lanciare il comando `mvn clean install`</li>
+<li>2. Rimuovere il container `t23-g1-app-1` </li>
+<li>3. Lanciare la build dell'immagine: `docker compose up -d --build`</li>
 
