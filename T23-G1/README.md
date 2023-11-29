@@ -39,7 +39,6 @@ All'atto dell'autenticazione, lo studente fornirà l'indirizzo e-mail fornito pe
 <h2>Build nuove modifiche</h2>
 <ol>
   <li>Lanciare il comando <code>mvn clean install</code> nella cartella contenente il progetto</li>
-  <li>Rimuovere il container <code>t23-g1-app-1</code></li>
   <li>Lanciare la build dell'immagine: <code>docker compose up -d --build</code></li>
 </ol>
 

@@ -19,7 +19,8 @@
             <div id="historyMsg">
                 <h2>Visualizza lo storico delle partite che hai giocato</h2>
             </div>
-            <button id="newGameButton" type="button" class="newGame-button" th:onclick="redirectToGame()">New Game</button>
+            <button id="newGameBaseButton" type="button" class="newBaseGame-button" th:onclick="redirectToGame()">New Base Game</button>
+            <button id="newGameAllRobotButton" type="button" class="newAllRobotGame-button" th:onclick="redirectToGameAllRobot()">1 vs All</button>
             <button id="rankingButton" type="button" class="ranking-button" th:onclick="redirectToRanking()">Ranking</button>
             <div id="rankingMsg">
                 <h2>Visualizza la classifica generale dei giocatori</h2>

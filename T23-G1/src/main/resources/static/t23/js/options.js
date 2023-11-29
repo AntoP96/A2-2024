@@ -21,6 +21,10 @@ function redirectToGame() {
   window.location.href = "/main";
 }
 
+function redirectToGameAllRobot() {
+  window.location.href = "/mainAll";
+}
+
 function redirectToHistory() {
   window.location.href = "/history";
 }

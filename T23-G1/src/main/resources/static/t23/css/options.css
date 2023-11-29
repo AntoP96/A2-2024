@@ -33,8 +33,9 @@ h1 {
 
 /* Button Styles */
 .history-button,
-.newGame-button,
-.ranking-button {
+.newBaseGame-button,
+.ranking-button,
+.newAllRobotGame-button {
   display: inline-block; /* Changed to inline-block for horizontal alignment */
   margin: 10px;
   padding: 15px 30px;
@@ -46,8 +47,9 @@ h1 {
 }
 
 .history-button:focus,
-.newGame-button:focus,
-.ranking-button:focus {
+.newBaseGame-button:focus,
+.ranking-button:focus,
+.newAllRobotGame-button:focus {
   outline: none; 
 }
 #historyMsg,
@@ -71,7 +73,11 @@ h1 {
   display: block;
 }
 
-.newGame-button:hover{
+.newBaseGame-button:hover{
+  background-color: white;
+  color: #00ffaa;
+}
+.newAllRobotGame-button:hover{
   background-color: white;
   color: #e74c3c;
 }
@@ -94,7 +100,11 @@ h1 {
   color: #fff;
 }
 
-.newGame-button {
+.newBaseGame-button {
+  background-color: #00ffaa; /* Changed button color */
+  color: #fff;
+}
+.newAllRobotGame-button {
   background-color: #e74c3c; /* Changed button color */
   color: #fff;
 }
