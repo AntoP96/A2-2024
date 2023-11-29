@@ -24,6 +24,6 @@ All'atto della autenticazione, lo studente fornirà l'indirizzo e-mail fornito p
 
 <h2> Build nuove modifiche </h2>
 1. Lanciare il comando `mvn clean install`
-2. Rimuovere il container `t23-g1` 
+2. Rimuovere il container `t23-g1-app-1` 
 3. Lanciare la build dell'immagine: `docker compose up -d --build`
 
