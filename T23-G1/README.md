@@ -22,3 +22,8 @@ All'atto della autenticazione, lo studente fornirà l'indirizzo e-mail fornito p
 	<code>mysql –u root –p STUDENTSREPO</code>: viene utilizzato per accedere all'interfaccia della riga di comando di MySQL e connettersi al database <code>STUDENTSREPO</code> utilizzando l'utente <code>root</code> e richiedendo la password <code>password</code>. </p></li>
 <li><p>Utilizzare i comandi SQL per la gestione delle tabelle (<code>SELECT</code>, <code>DROP</code>, <code>SHOW TABLES </code>, ecc.) </p></li>
 
+<h2> Build nuove modifiche </h2>
+1. Lanciare il comando `mvn clean install`
+2. Rimuovere il container `t23-g1` 
+3. Lanciare la build dell'immagine: `docker compose up -d --build`
+

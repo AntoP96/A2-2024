@@ -41,6 +41,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.db_setup.Authentication.AuthenticatedUser;
 import com.example.db_setup.Authentication.AuthenticatedUserRepository;
@@ -195,7 +197,7 @@ public class Controller {
         response.addCookie(jwtTokenCookie);
 
         try {
-            response.sendRedirect(request.getContextPath() + "/options");
+            response.sendRedirect("/options");
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -314,24 +316,24 @@ public class Controller {
     }
 
     // // ID per il task 5
-    // @GetMapping("/get_ID")
-    // public Integer getID(@RequestParam("email") String email, @RequestParam("password") String password){
+    @GetMapping("/get_ID")
+    public Integer getID(@RequestParam("email") String email, @RequestParam("password") String password){
         
-    //     User user = userRepository.findByEmail(email);
+        User user = userRepository.findByEmail(email);
 
-    //     if (user == null) {
-    //         return -1;
-    //     }
+        if (user == null) {
+            return -1;
+        }
 
-    //     boolean passwordMatches = myPasswordEncoder.matches(password, user.password);
-    //     if (!passwordMatches) {
-    //         return -1;
-    //     }
+        boolean passwordMatches = myPasswordEncoder.matches(password, user.password);
+        if (!passwordMatches) {
+            return -1;
+        }
 
-    //     Integer ID= user.ID;
+        Integer ID= user.ID;
 
-    //     return ID;
-    // }
+        return ID;
+    }
 
     /* GET PER LE VIEW */
 
@@ -358,14 +360,14 @@ public class Controller {
 
     @GetMapping("/register")
     public ModelAndView showRegistrationForm(HttpServletRequest request, @CookieValue(name = "jwt", required = false) String jwt) {
-        if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/main"); 
+        if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/options"); 
 
         return new ModelAndView("register");
     }
 
     @GetMapping("/login")
     public ModelAndView showLoginForm(HttpServletRequest request, @CookieValue(name = "jwt", required = false) String jwt) {
-        if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/main"); 
+        if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/options"); 
 
         return new ModelAndView("login");
     }
@@ -373,7 +375,7 @@ public class Controller {
     
     @GetMapping("/password_reset")
     public ModelAndView showResetForm(HttpServletRequest request, @CookieValue(name = "jwt", required = false) String jwt) {
-        if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/main"); 
+        if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/options"); 
         
         return new ModelAndView("password_reset");
     }
@@ -381,25 +383,26 @@ public class Controller {
     
     @GetMapping("/password_change")
     public ModelAndView showChangeForm(HttpServletRequest request, @CookieValue(name = "jwt", required = false) String jwt) {
-        if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/main"); 
+        if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/options"); 
 
         return new ModelAndView("password_change");
     }
 
     @GetMapping("/mail_register")
     public ModelAndView showMailForm(HttpServletRequest request, @CookieValue(name = "jwt", required = false) String jwt) {
-        if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/main"); 
+        if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/options"); 
 
         return new ModelAndView("mail_register");
     }
 
     @GetMapping("/options")
     public ModelAndView showOptionsForm(HttpServletRequest request, @CookieValue(name = "jwt", required = false) String jwt) {
-        if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/main"); 
-
-        return new ModelAndView("options");
+        if (isJwtValid(jwt)) {
+            return new ModelAndView("options");
+        } else {
+            return new ModelAndView("redirect:/login");
+        }
     }
-
 
 }
 
