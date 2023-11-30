@@ -7,13 +7,13 @@
     <script th:src="@{/t23/js/options.js}"></script>
 </head>
 
-<body class="bg-custom">
+<body>
     <div class="container">
         <h1>Choose an option</h1>
         <div class="logout-container">
             <button id="logoutButton" type="button" class="logout-button" th:onclick="redirectToLogin()">Logout</button>
         </div>
-        <div class="mt-2 row">
+        <div>
             <button id="historyButton" type="button" class="history-button" th:onclick="redirectToHistory()">Match history</button>
             <div id="historyMsg">
                 <h2>View the history of the games you have played</h2>
@@ -26,11 +26,6 @@
             </div>
         </div>
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>

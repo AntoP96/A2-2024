@@ -269,7 +269,7 @@ public class Controller {
 
         try {
             emailService.sendPasswordResetEmail(email, resetToken);
-            return ResponseEntity.ok("Password reset email sent successfully");
+            return ResponseEntity.status(HttpStatus.FOUND).header("Location", "/password_change").body("Password reset email sent successfully");
         } catch (MessagingException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to send password reset email");
         }
@@ -312,7 +312,7 @@ public class Controller {
         user.setResetToken(null);
         userRepository.save(user);
 
-        return ResponseEntity.ok("Password change successful");
+        return ResponseEntity.status(HttpStatus.FOUND).header("Location", "/login").body("Password change successful");
     }
 
     // // ID per il task 5
