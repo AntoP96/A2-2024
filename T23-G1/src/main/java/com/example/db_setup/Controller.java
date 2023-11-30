@@ -360,14 +360,14 @@ public class Controller {
 
     @GetMapping("/register")
     public ModelAndView showRegistrationForm(HttpServletRequest request, @CookieValue(name = "jwt", required = false) String jwt) {
-        if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/options"); 
+        if(isJwtValid(jwt)) return new ModelAndView("redirect:/options"); 
 
         return new ModelAndView("register");
     }
 
     @GetMapping("/login")
     public ModelAndView showLoginForm(HttpServletRequest request, @CookieValue(name = "jwt", required = false) String jwt) {
-        if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/options"); 
+        if(isJwtValid(jwt)) return new ModelAndView("redirect:/options"); 
 
         return new ModelAndView("login");
     }
@@ -375,7 +375,7 @@ public class Controller {
     
     @GetMapping("/password_reset")
     public ModelAndView showResetForm(HttpServletRequest request, @CookieValue(name = "jwt", required = false) String jwt) {
-        if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/options"); 
+        if(isJwtValid(jwt)) return new ModelAndView("redirect:/options"); 
         
         return new ModelAndView("password_reset");
     }
@@ -383,14 +383,14 @@ public class Controller {
     
     @GetMapping("/password_change")
     public ModelAndView showChangeForm(HttpServletRequest request, @CookieValue(name = "jwt", required = false) String jwt) {
-        if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/options"); 
+        if(isJwtValid(jwt)) return new ModelAndView("redirect:/options"); 
 
         return new ModelAndView("password_change");
     }
 
     @GetMapping("/mail_register")
     public ModelAndView showMailForm(HttpServletRequest request, @CookieValue(name = "jwt", required = false) String jwt) {
-        if(isJwtValid(jwt)) return new ModelAndView("redirect:http://localhost/options"); 
+        if(isJwtValid(jwt)) return new ModelAndView("redirect:/options"); 
 
         return new ModelAndView("mail_register");
     }
