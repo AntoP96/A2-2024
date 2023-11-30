@@ -1,5 +1,5 @@
 body {
-  font-family: "Montserrat", sans-serif; /* Changed font to Montserrat */
+  font-family: "Montserrat", sans-serif;
   font-weight: bold;
   background-image: url("https://media.licdn.com/dms/image/D4D22AQFv6lqHmb3osQ/feedshare-shrink_800/0/1685964874554?e=1688601600&v=beta&t=lH3d4hmDaW-gCXG6vQ-lTEZCgKBERrL98hD8gvqaN0A");
   background-size: cover;
@@ -7,28 +7,29 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
 }
 
 .container {
-  width: 60%; /* Increased width for a more centered look */
-  height: 60%; /* Increased height for better visibility */
+  width: 60%;
+  height: 60%;
   margin: 0 auto;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  border-radius: 10px; /* Increased border-radius for rounded corners */
+  border-radius: 10px;
   background-color: #1c1c28;
-  border: 3px solid #666; /* Increased border thickness for better contrast */
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); /* Adjusted box shadow for a subtle effect */
-  padding: 10px; /* Increased padding for a more comfortable layout */
+  border: 3px solid #666;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  padding: 10px;
 }
 
 h1 {
-  font-size: 3rem; /* Increased font size for emphasis */
-  color: rgba(255, 255, 255, 0.9); /* Adjusted text color for better visibility */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Added text shadow for a subtle effect */
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 /* Button Styles */
@@ -36,7 +37,7 @@ h1 {
 .newBaseGame-button,
 .ranking-button,
 .newAllRobotGame-button {
-  display: inline-block; /* Changed to inline-block for horizontal alignment */
+  display: inline-block;
   margin: 10px;
   padding: 15px 30px;
   border: none;
@@ -50,8 +51,9 @@ h1 {
 .newBaseGame-button:focus,
 .ranking-button:focus,
 .newAllRobotGame-button:focus {
-  outline: none; 
+  outline: none;
 }
+
 #historyMsg,
 #rankingMsg {
   display: none;
@@ -67,50 +69,52 @@ h1 {
   text-align: center;
 }
 
-.history-button:hover + #historyMsg{
-  background-color: white; 
+.history-button:hover + #historyMsg {
+  background-color: white;
   color: #3498db;
   display: block;
 }
 
-.newBaseGame-button:hover{
+.newBaseGame-button:hover {
   background-color: white;
   color: #00ffaa;
 }
-.newAllRobotGame-button:hover{
+
+.newAllRobotGame-button:hover {
   background-color: white;
   color: #e74c3c;
 }
+
 .ranking-button:hover + #rankingMsg {
   background-color: white;
   color: #27ae60;
   display: block;
 }
 
-.ranking-button:hover {
+.ranking-button:hover,
+.history-button:hover,
+.newBaseGame-button:hover {
   background-color: white;
-  color: #27ae60;
-}
-.history-button:hover {
-  background-color: white; 
   color: #3498db;
 }
+
 .history-button {
-  background-color: #3498db; /* Changed button color */
+  background-color: #3498db;
   color: #fff;
 }
 
 .newBaseGame-button {
-  background-color: #00ffaa; /* Changed button color */
+  background-color: #00ffaa;
   color: #fff;
 }
+
 .newAllRobotGame-button {
-  background-color: #e74c3c; /* Changed button color */
+  background-color: #e74c3c;
   color: #fff;
 }
 
 .ranking-button {
-  background-color: #27ae60; /* Changed button color */
+  background-color: #27ae60;
   color: #fff;
 }
 
@@ -139,7 +143,8 @@ h1 {
 .logout-button:focus {
   outline: none;
 }
+
 .logout-button:hover {
-  background-color: white; 
+  background-color: white;
   color: black;
 }

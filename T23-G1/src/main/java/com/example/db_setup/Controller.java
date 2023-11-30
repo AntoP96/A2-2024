@@ -3,6 +3,7 @@ package com.example.db_setup;
 import java.io.IOException;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.net.URI;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Header;
@@ -77,27 +78,26 @@ public class Controller {
     private RestTemplate restTemplate;
 
 
-    String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{3,14}$"; // maiuscola, minuscola e numero
-    Pattern p = Pattern.compile(regex);
+    private static final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{3,14}$";
+    private static final Pattern PASSWORD_REGEX = Pattern.compile(PASSWORD_PATTERN);
 
 
     // Registrazione
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestParam("name") String name,
-                                            @RequestParam("surname") String surname,
-                                            @RequestParam("email") String email,
-                                            @RequestParam("password") String password,
-                                            @RequestParam("check_password") String check_password,
-                                            @RequestParam("studies") Studies studies,
-                                            @RequestParam("g-recaptcha-response") String gRecaptchaResponse, @CookieValue(name = "jwt", required = false) String jwt, HttpServletRequest request) {
-        
-        if(isJwtValid(jwt)) {
+            @RequestParam("surname") String surname, @RequestParam("email") String email,
+            @RequestParam("password") String password, @RequestParam("check_password") String check_password,
+            @RequestParam("studies") Studies studies,
+            @RequestParam("g-recaptcha-response") String gRecaptchaResponse,
+            @CookieValue(name = "jwt", required = false) String jwt, HttpServletRequest request) {
+
+        if (isJwtValid(jwt)) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Already logged in");
         }
 
-        //verifica del recaptcha
+        // verifica del recaptcha
         verifyReCAPTCHA(gRecaptchaResponse);
-        
+
         User n = new User();
 
         // NOME
@@ -126,7 +126,7 @@ public class Controller {
         }
 
         // PASSWORD
-        Matcher m = p.matcher(password);
+        Matcher m = PASSWORD_REGEX.matcher(password);
 
         if ((password.length() >16) || (password.length() < 8) || !(m.matches())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Password not valid");
@@ -147,7 +147,7 @@ public class Controller {
 
         try {
             emailService.sendMailRegister(email, ID);
-            return ResponseEntity.ok("Registration completed successfully!");
+            return ResponseEntity.status(HttpStatus.FOUND).header("Location", "/options").body("Registration completed successfully!");
         } catch (MessagingException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to confirm your registration");
         }
@@ -229,7 +229,7 @@ public class Controller {
         jwtTokenCookie.setMaxAge(0);
         response.addCookie(jwtTokenCookie);
 
-        return new ModelAndView("redirect:http://localhost/login"); 
+        return new ModelAndView("redirect:/login"); 
     }
 
     @PostMapping("/logout")
@@ -296,7 +296,7 @@ public class Controller {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid reset token");
         }
 
-        Matcher m = p.matcher(newPassword);
+        Matcher m = PASSWORD_REGEX.matcher(newPassword);
 
         if ((newPassword.length() >= 15) || (newPassword.length() <= 2) || !(m.matches())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Password not valid");

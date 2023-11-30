@@ -11,30 +11,33 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailService {
 
+  private final JavaMailSender javaMailSender;
+
   @Autowired
-  private JavaMailSender javaMailSender;
-
-  // MAIL RESET PASSWORD
-  public void sendPasswordResetEmail(String email, String resetToken) throws MessagingException {
-    MimeMessage message = javaMailSender.createMimeMessage();
-    MimeMessageHelper helper = new MimeMessageHelper(message, true);
-
-    helper.setTo(email);
-    helper.setSubject("Password reset request");
-    helper.setText("Please copy the following token to reset your password: " + resetToken);
-
-    javaMailSender.send(message);
-
+  public EmailService(JavaMailSender javaMailSender) {
+    this.javaMailSender = javaMailSender;
   }
 
-  // MAIL REGISTER ID
-  public void sendMailRegister(String email, Integer id) throws MessagingException {
+  // Invia email per il reset della password
+  public void sendPasswordResetEmail(String recipientEmail, String resetToken) throws MessagingException {
     MimeMessage message = javaMailSender.createMimeMessage();
     MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
-    helper.setTo(email);
-    helper.setSubject("Registration completed successfully");
-    helper.setText("Welcome to GamesApp! This is your ID: " + id);
+    helper.setTo(recipientEmail);
+    helper.setSubject("Password Reset Request");
+    helper.setText("Please use the following token to reset your password: " + resetToken);
+
+    javaMailSender.send(message);
+  }
+
+  // Invia email per la registrazione dell'ID
+  public void sendMailRegister(String recipientEmail, Integer id) throws MessagingException {
+    MimeMessage message = javaMailSender.createMimeMessage();
+    MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+    helper.setTo(recipientEmail);
+    helper.setSubject("Registration Successful");
+    helper.setText("Welcome to GamesApp! Your ID is: " + id);
 
     javaMailSender.send(message);
   }

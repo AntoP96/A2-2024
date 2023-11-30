@@ -6,10 +6,9 @@ function redirectToLogin() {
       .then((response) => {
         if (!response.ok) {
           throw new Error("La richiesta di logout non è andata a buon fine");
-        } else {
-          console.log("stai per essere reindirizzato alla pagina di login");
-          window.location.href = "/login";
         }
+        console.log("Stai per essere reindirizzato alla pagina di login");
+        window.location.href = "/login";
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -33,24 +32,34 @@ function redirectToRanking() {
   window.location.href = "/ranking";
 }
 
-document.getElementById('historyButton').addEventListener('mouseover', function() {
-  // Mostra la descrizione quando il mouse è sopra il bottone
-  document.getElementById('historyMsg').style.display = 'block';
-});
+document
+  .getElementById("historyButton")
+  .addEventListener("mouseover", function () {
+    showDescription("historyMsg");
+  });
 
-// Aggiungi un listener per l'evento mouseout al bottone
-document.getElementById('historyButton').addEventListener('mouseout', function() {
-  // Nascondi la descrizione quando il mouse esce dal bottone
-  document.getElementById('historyMsg').style.display = 'none';
-});
+document
+  .getElementById("historyButton")
+  .addEventListener("mouseout", function () {
+    hideDescription("historyMsg");
+  });
 
-document.getElementById('rankingButton').addEventListener('mouseover', function() {
-  // Mostra la descrizione quando il mouse è sopra il bottone
-  document.getElementById('rankingMsg').style.display = 'block';
-});
+document
+  .getElementById("rankingButton")
+  .addEventListener("mouseover", function () {
+    showDescription("rankingMsg");
+  });
 
-// Aggiungi un listener per l'evento mouseout al bottone
-document.getElementById('rankingButton').addEventListener('mouseout', function() {
-  // Nascondi la descrizione quando il mouse esce dal bottone
-  document.getElementById('rankingMsg').style.display = 'none';
-});
+document
+  .getElementById("rankingButton")
+  .addEventListener("mouseout", function () {
+    hideDescription("rankingMsg");
+  });
+
+function showDescription(elementId) {
+  document.getElementById(elementId).style.display = "block";
+}
+
+function hideDescription(elementId) {
+  document.getElementById(elementId).style.display = "none";
+}
