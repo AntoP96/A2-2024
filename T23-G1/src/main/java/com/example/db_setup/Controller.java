@@ -89,7 +89,7 @@ public class Controller {
             @RequestParam("password") String password, @RequestParam("check_password") String check_password,
             @RequestParam("studies") Studies studies,
             @RequestParam("g-recaptcha-response") String gRecaptchaResponse,
-            @CookieValue(name = "jwt", required = false) String jwt, HttpServletRequest request) {
+            @CookieValue(name = "jwt", required = false) String jwt, HttpServletRequest request, HttpServletResponse response) {
 
         if (isJwtValid(jwt)) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Already logged in");
@@ -147,6 +147,12 @@ public class Controller {
 
         try {
             emailService.sendMailRegister(email, ID);
+            String token = generateToken(n);
+            AuthenticatedUser authenticatedUser = new AuthenticatedUser(n, token);
+            authenticatedUserRepository.save(authenticatedUser);
+            Cookie jwtTokenCookie = new Cookie("jwt", token);
+            jwtTokenCookie.setMaxAge(3600);
+            response.addCookie(jwtTokenCookie);
             return ResponseEntity.status(HttpStatus.FOUND).header("Location", "/options").body("Registration completed successfully!");
         } catch (MessagingException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to confirm your registration");
