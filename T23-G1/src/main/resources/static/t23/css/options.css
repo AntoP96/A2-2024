@@ -97,7 +97,11 @@ h1 {
   display: block;
 }
 
-.ranking-button:hover,
+.ranking-button:hover{
+  background-color: white;
+  color: #27ae60;
+}
+
 .history-button:hover {
   background-color: white;
   color: #3498db;
