@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.Optional;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.Cookie;
@@ -40,6 +41,7 @@ import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -409,6 +411,40 @@ public class Controller {
             return new ModelAndView("redirect:/login");
         }
     }
+
+    @GetMapping("/history")
+    public ModelAndView showHistoryForm(HttpServletRequest request, @CookieValue(name = "jwt", required = false) String jwt) {
+        if (isJwtValid(jwt)) {
+            return new ModelAndView("history");
+        } else {
+            return new ModelAndView("redirect:/login");
+        }
+    }
+    
+    @GetMapping("/ranking")
+    public ModelAndView showRankingForm(HttpServletRequest request, @CookieValue(name = "jwt", required = false) String jwt) {
+        if (isJwtValid(jwt)) {
+            return new ModelAndView("ranking");
+        } else {
+            return new ModelAndView("redirect:/login");
+        }
+    }
+
+    @GetMapping("/getNameSurnameById/{idGiocatore}")
+    public ResponseEntity<String> getNameSurnameById(@PathVariable("idGiocatore") Integer idGiocatore) {
+        // Trova l'utente nel repository tramite l'ID
+        Optional<User> optionalUser = userRepository.findById(idGiocatore);
+
+        if (optionalUser.isPresent()) {
+            // Se l'utente è presente, restituisci il nome e il cognome
+            User user = optionalUser.get();
+            String nameSurname = user.getName() + " " + user.getSurname();
+            return ResponseEntity.ok(nameSurname);
+        } else {
+            // Se l'utente non è trovato, restituisci una risposta appropriata
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found with ID: " + idGiocatore);
+    }
+}
 
 }
 

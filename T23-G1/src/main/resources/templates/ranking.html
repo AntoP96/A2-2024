@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title>Ranking</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/t23/css/ranking.css}" />
+    <script th:src="@{/t23/js/ranking.js}"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Classifica Giocatori</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Giocatore</th>
+                <th>Partite Totali</th>
+                <th>Partite Vinte</th>
+                <th>Partite Perse</th>
+                <th>Avversario</th>
+                <th>Tempo di Gioco</th>
+            </tr>
+        </thead>
+        <tbody id="classificaBody">
+            <!-- Qui verranno inserite dinamicamente le righe della classifica -->
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+
+</html>
