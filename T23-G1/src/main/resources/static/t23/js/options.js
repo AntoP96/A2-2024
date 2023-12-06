@@ -13,6 +13,7 @@ function redirectToLogin() {
       .catch((error) => {
         console.error("Error:", error);
       });
+    return false;
   }
 }
 
@@ -28,29 +29,28 @@ function redirectToRanking() {
   window.location.href = "/ranking";
 }
 
-document
-  .getElementById("historyButton")
-  .addEventListener("mouseover", function () {
+const historyButton = document.getElementById("historyButton");
+const rankingButton = document.getElementById("rankingButton");
+
+if (historyButton) {
+  historyButton.addEventListener("mouseover", function () {
     showDescription("historyMsg");
   });
 
-document
-  .getElementById("historyButton")
-  .addEventListener("mouseout", function () {
+  historyButton.addEventListener("mouseout", function () {
     hideDescription("historyMsg");
   });
+}
 
-document
-  .getElementById("rankingButton")
-  .addEventListener("mouseover", function () {
+if (rankingButton) {
+  rankingButton.addEventListener("mouseover", function () {
     showDescription("rankingMsg");
   });
 
-document
-  .getElementById("rankingButton")
-  .addEventListener("mouseout", function () {
+  rankingButton.addEventListener("mouseout", function () {
     hideDescription("rankingMsg");
   });
+}
 
 function showDescription(elementId) {
   document.getElementById(elementId).style.display = "block";

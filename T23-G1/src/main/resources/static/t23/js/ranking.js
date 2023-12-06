@@ -48,5 +48,9 @@ function setContainerHeight() {
   container.style.height = `${tableHeight + 50}px`;
 }
 
+function redirectToHome() {
+  window.location.href = "/options";
+}
+
 // Chiamata alla funzione principale
 populateClassifica();
