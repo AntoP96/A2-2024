@@ -1,5 +1,5 @@
 const apiClassifica = 'http://localhost:8080/ranking'; // Chiamta API per ottenere la classifica
-const apiNameSurnamebyId = '/getNameSurnameById/{idGiocatore}'; // Chiamata al Controller per ottenere il nome e cognome del giocatore dall'id
+const apiNameSurnamebyId = '/getNameSurnameById?id={idGiocatore}'; // Chiamata al Controller per ottenere il nome e cognome del giocatore dall'id
 
 // Funzione principale per ottenere la classifica e popolare la tabella HTML
 async function populateClassifica() {

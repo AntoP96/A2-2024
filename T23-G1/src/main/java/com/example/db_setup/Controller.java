@@ -45,7 +45,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.db_setup.Authentication.AuthenticatedUser;
 import com.example.db_setup.Authentication.AuthenticatedUserRepository;
@@ -430,21 +429,22 @@ public class Controller {
         }
     }
 
-    @GetMapping("/getNameSurnameById/{idGiocatore}")
-    public ResponseEntity<String> getNameSurnameById(@PathVariable("idGiocatore") Integer idGiocatore) {
+    @GetMapping("/getNameSurnameById")
+    public ResponseEntity<String> getNameSurnameById(@RequestParam("id") Integer idGiocatore) {
         // Trova l'utente nel repository tramite l'ID
         Optional<User> optionalUser = userRepository.findById(idGiocatore);
 
         if (optionalUser.isPresent()) {
-            // Se l'utente è presente, restituisci il nome e il cognome
+            // Estrai l'utente dall'Optional
             User user = optionalUser.get();
+        
+            // Se l'utente è presente, restituisci il nome e il cognome
             String nameSurname = user.getName() + " " + user.getSurname();
             return ResponseEntity.ok(nameSurname);
         } else {
             // Se l'utente non è trovato, restituisci una risposta appropriata
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found with ID: " + idGiocatore);
+        }
     }
-}
 
 }
-
