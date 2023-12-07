@@ -19,7 +19,6 @@ async function populateClassifica() {
         <td>${giocatore.partiteVinte}</td>
         <td>${giocatore.partitePerse}</td>
         <td>${giocatore.score}</td>
-        <td>${giocatore.tempoDiGioco}</td>
       `;
 
       classificaBody.appendChild(row);
