@@ -1,7 +1,6 @@
-const apiClassifica = 'http://localhost:8080/ranking'; // Chiamta API per ottenere la classifica
-const apiNameSurnamebyId = '/getNameSurnameById?id={idGiocatore}'; // Chiamata al Controller per ottenere il nome e cognome del giocatore dall'id
+const apiClassifica = 'http://localhost:8080/ranking';
+const apiNameSurnamebyId = '/getNameSurnameById?id={idGiocatore}';
 
-// Funzione principale per ottenere la classifica e popolare la tabella HTML
 async function populateClassifica() {
   try {
     const response = await axios.get(apiClassifica);
@@ -11,24 +10,22 @@ async function populateClassifica() {
 
     for (const giocatore of classificaData) {
       const nomeCognome = await getNomeCognomeById(giocatore.idGiocatore);
-
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${nomeCognome}</td>
-        <td>${giocatore.partiteTotali}</td>
-        <td>${giocatore.partiteVinte}</td>
-        <td>${giocatore.partitePerse}</td>
-        <td>${giocatore.score}</td>
-      `;
-
+      const row = createTableRow([
+        nomeCognome, 
+        giocatore.partiteTotali, 
+        giocatore.partiteVinte, 
+        giocatore.partitePerse, 
+        giocatore.score
+      ]);
       classificaBody.appendChild(row);
     }
+
+    setContainerSize();
   } catch (error) {
     console.error('Errore durante la richiesta API della classifica:', error);
   }
 }
 
-// Funzione per ottenere nome e cognome del giocatore dall'id
 async function getNomeCognomeById(idGiocatore) {
   try {
     const response = await axios.get(apiNameSurnamebyId.replace('{idGiocatore}', idGiocatore));
@@ -39,17 +36,25 @@ async function getNomeCognomeById(idGiocatore) {
   }
 }
 
-// Funzione per impostare l'altezza del container
-function setContainerHeight() {
+function createTableRow(dataArray) {
+  const row = document.createElement('tr');
+  dataArray.forEach((data) => {
+    const cell = document.createElement('td');
+    cell.textContent = data;
+    row.appendChild(cell);
+  });
+  return row;
+}
+
+function setContainerSize() {
   const container = document.querySelector('.container');
   const table = document.querySelector('table');
-  const tableHeight = table.offsetHeight;
-  container.style.height = `${tableHeight + 50}px`;
+  container.style.height = `${table.offsetHeight + 50}px`;
+  container.style.width = `${table.offsetWidth + 50}px`;
 }
 
 function redirectToHome() {
-  window.location.href = "/options";
+  window.location.href = '/options';
 }
 
-// Chiamata alla funzione principale
 populateClassifica();

@@ -41,9 +41,10 @@ body::before {
 }
 
 h1 {
-    font-size: 3rem;
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5rem;
+    color: rgba(57, 57, 83, 1);
+    text-shadow: 0.5px 0 0 #acacac, 0 0.5px 0 #acacac, 0.5px 0 0 #acacac, 0 0.5px 0 #acacac;
 }
 
 table {
@@ -60,8 +61,8 @@ th, td {
 }
 
 th {
-    background-color: #363636;
-    color: #a100ae; /* Colore del testo dell'intestazione */
+    background-color: #acacac;
+    color: rgba(57, 57, 83, 1); /* Colore del testo dell'intestazione */
     font-weight: bold; /* Imposta il testo in grassetto */
 }
 
