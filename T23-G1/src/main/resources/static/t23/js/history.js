@@ -1,5 +1,9 @@
-const apiHistory = "http://localhost:8080/matchHistory";
+const apiHistory = "http://fastapi:8000/matchHistory";
 const apiNameSurnamebyId = "/getNameSurnameById?id={idGiocatore}";
+
+document.addEventListener("DOMContentLoaded", function() {
+    populateHistory();
+});
 
 // Funzione principale per ottenere lo storico partite e popolare la tabella HTML
 async function populateHistory() {
@@ -13,9 +17,12 @@ async function populateHistory() {
             const nomeCognome = await getNomeCognomeById(match.idGiocatore);
             const winnerInfo = await getWinnerInfo(match.winner);
 
+            // Mappa l'array di robot per ottenere tutti i nomi
+            const robotNames = match.robots.map(robot => robot.name).join(", ");
+
             const row = createTableRow([
                 nomeCognome,
-                match.robots.name,
+                robotNames,
                 match.duration,
                 match.difficulty,
                 winnerInfo,
@@ -28,7 +35,6 @@ async function populateHistory() {
             historyBody.appendChild(row);
         }
 
-        setContainerSize();
     } catch (error) {
         console.error("Errore durante la richiesta API dello storico partite:", error);
     }
@@ -56,7 +62,7 @@ async function getWinnerInfo(winner) {
     }
 }
 
-// Funzione per creare una riga della tabella
+// Funzione per creare le righe della tabella
 function createTableRow(dataArray) {
     const row = document.createElement("tr");
     dataArray.forEach((data) => {
@@ -67,17 +73,6 @@ function createTableRow(dataArray) {
     return row;
 }
 
-// Funzione per impostare le dimensioni del container
-function setContainerSize() {
-    const container = document.querySelector(".container");
-    const table = document.querySelector("table");
-    container.style.height = `${table.offsetHeight + 50}px`;
-    container.style.width = `${table.offsetWidth + 50}px`;
-}
-
 function redirectToHome() {
     window.location.href = "/options";
 }
-
-// Chiamata alla funzione principale
-populateHistory();

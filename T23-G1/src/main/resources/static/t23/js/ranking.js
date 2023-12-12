@@ -1,6 +1,11 @@
-const apiClassifica = 'http://localhost:8080/ranking';
+const apiClassifica = 'http://fastapi:8000/ranking';
 const apiNameSurnamebyId = '/getNameSurnameById?id={idGiocatore}';
 
+document.addEventListener("DOMContentLoaded", function() {
+  populateClassifica();
+});
+
+// Funzione principale per ottenere la classifica e popolare la tabella HTML
 async function populateClassifica() {
   try {
     const response = await axios.get(apiClassifica);
@@ -26,6 +31,7 @@ async function populateClassifica() {
   }
 }
 
+// Funzione per ottenere nome e cognome del giocatore dall'id
 async function getNomeCognomeById(idGiocatore) {
   try {
     const response = await axios.get(apiNameSurnamebyId.replace('{idGiocatore}', idGiocatore));
@@ -36,6 +42,7 @@ async function getNomeCognomeById(idGiocatore) {
   }
 }
 
+// Funzione per creare le righe della tabella
 function createTableRow(dataArray) {
   const row = document.createElement('tr');
   dataArray.forEach((data) => {
@@ -46,15 +53,6 @@ function createTableRow(dataArray) {
   return row;
 }
 
-function setContainerSize() {
-  const container = document.querySelector('.container');
-  const table = document.querySelector('table');
-  container.style.height = `${table.offsetHeight + 50}px`;
-  container.style.width = `${table.offsetWidth + 50}px`;
-}
-
 function redirectToHome() {
   window.location.href = '/options';
 }
-
-populateClassifica();

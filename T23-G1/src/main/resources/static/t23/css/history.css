@@ -31,8 +31,8 @@ body::before {
     border: 3px solid #666;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
     padding: 10px;
-    width: 60%;
-    height: 60%;
+    width: 1200px; /* Imposta la larghezza fissa desiderata */
+    height: 500px; /* Imposta l'altezza fissa desiderata */
     margin: auto;
     position: absolute;
     top: 50%;
