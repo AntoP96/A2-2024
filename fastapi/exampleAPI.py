@@ -1,24 +1,28 @@
 from typing import List
 from fastapi import FastAPI
-from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+
+# Configurazione del middleware CORS
+def configure_cors(app: FastAPI):
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
 app = FastAPI()
 
-# Configura il middleware CORS per consentire tutte le origini
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Puoi specificare le origini consentite invece di "*" per una maggiore sicurezza
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# Configurazione CORS
+configure_cors(app)
 
-# Definisci un modello Pydantic per i robot
+# Modello Pydantic per i robot
 class Robot(BaseModel):
     name: str
 
-# Definisci un modello Pydantic per i giocatori nel ranking
+# Modello Pydantic per i giocatori nel ranking
 class Player(BaseModel):
     idGiocatore: int
     partiteTotali: int
@@ -26,7 +30,7 @@ class Player(BaseModel):
     partitePerse: int
     score: int
 
-# Definisci un modello Pydantic per le partite
+# Modello Pydantic per le partite
 class Match(BaseModel):
     match_id: str
     idGiocatore: int
@@ -39,80 +43,71 @@ class Match(BaseModel):
     classeTestata: str
     date: str
 
-# Definisci un modello Pydantic per la risposta del ranking
-class RankingResponse(BaseModel):
-    status: str
-    data: dict
-
-# Payload di esempio per il ranking
-ranking_data = {
-    "status": "success",
-    "data": {
-        "ranking": [
-            {
-                "idGiocatore": 1,
-                "partiteTotali": 10,
-                "partiteVinte": 8,
-                "partitePerse": 2,
-                "score": 82,
-            },
-            {
-                "idGiocatore": 2,
-                "partiteTotali": 12,
-                "partiteVinte": 6,
-                "partitePerse": 6,
-                "score": 70,
-            }
-            # Altri giocatori...
-        ]
+# Funzioni per generare dati di esempio
+def generate_ranking_data():
+    """Genera dati di esempio per la classifica dei giocatori."""
+    return {
+        "status": "success",
+        "data": {
+            "ranking": [
+                {"idGiocatore": 1, "partiteTotali": 10, "partiteVinte": 8, "partitePerse": 2, "score": 82},
+                {"idGiocatore": 2, "partiteTotali": 12, "partiteVinte": 6, "partitePerse": 6, "score": 70},
+                # Altri giocatori...
+            ]
+        }
     }
-}
 
-# Payload di esempio per le partite
-matches_data = {
-    "status": "success",
-    "data": {
-        "matches": [
-            {
-                "match_id": "1",
-                "idGiocatore": 1,
-                "robots": [
-                    {"name": "Randoop"},
-                    {"name": "Evosuite"}
-                ],
-                "duration": "00:25:30",
-                "difficulty": "medium",
-                "winner": 1,
-                "scoreGiocatore": 92,
-                "scoreRobot": 82,
-                "classeTestata": "Calcolatrice",
-                "date": "2023-12-06 18:45:00"
-            },
-            {
-                "match_id": "2",
-                "idGiocatore": 2,
-                "robots": [
-                    {"name": "Evosuite"}
-                ],
-                "duration": "00:20:30",
-                "difficulty": "medium",
-                "winner": "Evosuite",
-                "scoreGiocatore": 62,
-                "scoreRobot": 80,
-                "classeTestata": "Calcolatrice",
-                "date": "2023-12-06 20:45:00"
-            }
-            # Altre partite giocate
-        ]
+def generate_matches_data():
+    """Genera dati di esempio per lo storico partite."""
+    return {
+        "status": "success",
+        "data": {
+            "matches": [
+                {
+                    "match_id": "1",
+                    "idGiocatore": 1,
+                    "robots": [{"name": "Randoop"}, {"name": "Evosuite"}],
+                    "duration": "00:25:30",
+                    "difficulty": "medium",
+                    "winner": 1,
+                    "scoreGiocatore": 92,
+                    "scoreRobot": 82,
+                    "classeTestata": "Calcolatrice",
+                    "date": "2023-12-06 18:45:00",
+                },
+                {
+                    "match_id": "2",
+                    "idGiocatore": 2,
+                    "robots": [{"name": "Evosuite"}],
+                    "duration": "00:20:30",
+                    "difficulty": "medium",
+                    "winner": "Evosuite",
+                    "scoreGiocatore": 62,
+                    "scoreRobot": 80,
+                    "classeTestata": "Calcolatrice",
+                    "date": "2023-12-06 20:45:00",
+                }
+                # Altre partite giocate
+            ]
+        }
     }
-}
 
 # Endpoint per ottenere il payload del ranking
-@app.get("/ranking", response_model=RankingResponse)
+@app.get("/ranking", response_model=dict, summary="Endpoint per ottenere la classifica dei giocatori", responses={
+    200: {"description": "Success"},
+    404: {"description": "Not Found"},
+    500: {"description": "Internal Server Error"},
+})
 def get_ranking():
-    return ranking_data
+    """Restituisce il payload della classifica."""
+    return generate_ranking_data()
 
 # Endpoint per ottenere il payload delle partite
-@app.get("/matchHistory", response_model=dict)
+@app.get("/matchHistory", response_model=dict, summary="Endpoint per ottenere lo storico delle partite", responses={
+    200: {"description": "Success"},
+    404: {"description": "Not Found"},
+    500: {"description": "Internal Server Error"},
+})
 def get_matches():
-    return matches_data
+    """Restituisce il payload delle partite."""
+    return generate_matches_data()
