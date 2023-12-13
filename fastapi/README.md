@@ -17,6 +17,7 @@ Per lo sviluppo di questo task è stato utilizzato fastAPI, un framework base py
   <li>Aprire Docker Desktop</li>
   <li>Aprire un terminale e posizionarsi nella cartella dov'è contenuto il progetto. Il comando <code>docker-compose up -d --build</code> viene utilizzato per avviare i servizi definiti in un file di configurazione <code>docker-compose.yml</code>. Viene, quindi, creata l’immagine del container ed eseguito il running.</li>
   <li>Per effettuare le richieste, aprire da browser le pagine tramite i path in locale (http://fastapi:8000/ranking, http://localhost:8000/matchHistory, ecc.)</li>
+  <li>Per visualizzare la documentazione visitare: http://fastapi:8000/docs</li>
     </ul>
   </li>
 </ul>
