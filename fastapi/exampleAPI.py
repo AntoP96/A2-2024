@@ -99,7 +99,7 @@ def generate_matches_data():
     500: {"description": "Internal Server Error"},
 })
 def get_ranking():
-    """Restituisce il payload della classifica."""
+    """Restituisce i dati della classifica."""
     return generate_ranking_data()
 
 # Endpoint per ottenere il payload delle partite
@@ -109,5 +109,5 @@ def get_ranking():
     500: {"description": "Internal Server Error"},
 })
 def get_matches():
-    """Restituisce il payload delle partite."""
+    """Restituisce lo storico delle partite delle partite."""
     return generate_matches_data()
