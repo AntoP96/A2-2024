@@ -69,10 +69,6 @@ th {
     font-weight: bold; /* Imposta il testo in grassetto */
 }
 
-tr:nth-child(even) {
-    background-color: #2c2c2c; /* Colore di sfondo delle righe pari */
-}
-
 tr:hover {
     background-color: #454545; /* Colore di sfondo al passaggio del mouse */
 }
