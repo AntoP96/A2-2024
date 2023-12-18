@@ -1,0 +1,120 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+body::before {
+    content: "";
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.container {
+    text-align: center;
+    overflow: auto;
+    border-radius: 10px;
+    background-color: #1c1c28;
+    border: 3px solid #666;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    width: 1500px; /* Imposta la larghezza fissa desiderata */
+    height: 500px; /* Imposta l'altezza fissa desiderata */
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.5rem;
+    color: rgba(57, 57, 83, 1);
+    text-shadow: 0.5px 0 0 #acacac, 0 0.5px 0 #acacac, 0.5px 0 0 #acacac, 0 0.5px 0 #acacac;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: #fff;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: auto;
+}
+
+th {
+    background-color: #acacac;
+    color: rgba(57, 57, 83, 1); /* Colore del testo dell'intestazione */
+    font-weight: bold; /* Imposta il testo in grassetto */
+}
+
+tr:hover {
+    background-color: #2e2e2e; /* Colore di sfondo al passaggio del mouse */
+}
+
+/* Aggiungi effetto di transizione al cambio di colore */
+tr {
+    transition: background-color 0.3s ease;
+}
+
+/* Regola aggiuntiva per ridurre la larghezza delle colonne se necessario */
+@media (max-width: 1200px) {
+    th, td {
+        width: auto;
+    }
+}
+
+/* Home Button Styles */
+.home-container {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+.home-button {
+    background-color: rgba(57, 57, 83, 1);
+    color: #fff;
+    border: rgba(57, 57, 83, 1);
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+.home-button i {
+    margin-right: 5px;
+    font-size: 16px; /* Imposta la dimensione dell'icona uguale alla dimensione del testo */
+}
+
+.home-button:focus {
+    outline: none;
+}
+
+.home-button:hover {
+    background-color: white;
+    color: black;
+}

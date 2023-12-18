@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <title>Ranking</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/t23/css/ranking.css}" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script th:src="@{/t23/js/ranking.js}"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Classifica Giocatori</h1>
+
+    <div class="home-container">
+        <button id="homeButton" type="button" class="home-button" th:onclick="redirectToHome()">
+            <i class="fas fa-home"></i>
+        </button>
+    </div>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Giocatore</th>
+                <th>Partite Totali</th>
+                <th>Partite Vinte</th>
+                <th>Partite Perse</th>
+                <th>Score Medio</th>
+            </tr>
+        </thead>
+        <tbody id="classificaBody">
+            <!-- Qui verranno inserite dinamicamente le righe della classifica -->
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+
+</html>
