@@ -1,8 +1,13 @@
 const apiHistory = "http://fastapi:8000/matchHistory";
 const apiNameSurnamebyId = "/getNameSurnameById?id={idGiocatore}";
 
-document.addEventListener("DOMContentLoaded", function() {
-    populateHistory();
+document.addEventListener("DOMContentLoaded", (e) => {
+    const idGiocatore = extractIdFromToken();
+    if (idGiocatore) {
+        populateHistory(idGiocatore);
+    } else {
+        console.error("IdGiocatore non valido.");
+}
 });
 
 // Funzione principale per ottenere lo storico partite e popolare la tabella HTML
@@ -81,7 +86,7 @@ function extractIdFromToken() {
         const payload = parseJwt(token);
         if (payload) {
             const userId = payload.userId;
-            console.log("ID dell'utente estratto dal JWT:", userId);
+            //console.log("ID dell'utente estratto dal JWT:", userId);
             return userId;
         }
     }
@@ -102,16 +107,6 @@ const parseJwt = (token) => {
         return null;
     }
 };
-
-document.addEventListener("DOMContentLoaded", (e) => {
-    const idGiocatore = extractIdFromToken();
-    if (idGiocatore) {
-        document.getElementById("usernameField").innerText = idGiocatore;
-        populateHistory(idGiocatore);
-    } else {
-        console.error("IdGiocatore non valido.");
-}
-});
 
 function redirectToHome() {
     window.location.href = "/options";

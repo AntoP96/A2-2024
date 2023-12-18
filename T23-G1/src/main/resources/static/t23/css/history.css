@@ -31,7 +31,7 @@ body::before {
     border: 3px solid #666;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
     padding: 10px;
-    width: 1200px; /* Imposta la larghezza fissa desiderata */
+    width: 1500px; /* Imposta la larghezza fissa desiderata */
     height: 500px; /* Imposta l'altezza fissa desiderata */
     margin: auto;
     position: absolute;
@@ -51,36 +51,28 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    color: #fff; /* Colore del testo della tabella */
+    color: #fff;
 }
 
 th, td {
-    border: 1px solid #666;
     padding: 10px;
     text-align: center;
-    max-height: 50px; /* Imposta l'altezza massima delle righe */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    width: auto; /* Rimuovi la larghezza fissa delle colonne */
+}
+
+@media (max-width: 1200px) {
+    th, td {
+        width: auto;
+    }
 }
 
 th {
     background-color: #acacac;
     color: rgba(57, 57, 83, 1); /* Colore del testo dell'intestazione */
     font-weight: bold; /* Imposta il testo in grassetto */
-}
-
-/* Regole per cambiare il colore del testo anziché il background */
-tr:nth-child(1) {
-    color: gold; /* Colore oro per la prima riga */
-}
-
-tr:nth-child(2) {
-    color: silver; /* Colore argento per la seconda riga */
-}
-
-tr:nth-child(3) {
-    color: #cd7f32; /* Colore bronzo per la terza riga */
 }
 
 tr:hover {

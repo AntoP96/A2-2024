@@ -77,10 +77,17 @@ tr:hover {
     background-color: #454545; /* Colore di sfondo al passaggio del mouse */
 }
 
-@media (max-width: 1200px) {
-    th, td {
-        width: auto;
-    }
+/* Regole per cambiare il colore del testo anziché il background */
+tr:nth-child(1) {
+    color: gold; /* Colore oro per la prima riga */
+}
+
+tr:nth-child(2) {
+    color: silver; /* Colore argento per la seconda riga */
+}
+
+tr:nth-child(3) {
+    color: #cd7f32; /* Colore bronzo per la terza riga */
 }
 
 /* Aggiungi effetto di transizione al cambio di colore */

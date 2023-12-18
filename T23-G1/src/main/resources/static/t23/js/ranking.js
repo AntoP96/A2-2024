@@ -2,11 +2,11 @@ const apiClassifica = 'http://fastapi:8000/ranking';
 const apiNameSurnamebyId = '/getNameSurnameById?id={idGiocatore}';
 
 document.addEventListener("DOMContentLoaded", function() {
-  populateClassifica();
+  populateRanking();
 });
 
 // Funzione principale per ottenere la classifica e popolare la tabella HTML
-async function populateClassifica() {
+async function populateRanking() {
   try {
     const response = await axios.get(apiClassifica);
     const classificaData = response.data.data.ranking;
