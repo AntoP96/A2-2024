@@ -66,10 +66,6 @@ th {
     font-weight: bold; /* Imposta il testo in grassetto */
 }
 
-tr:nth-child(even) {
-    background-color: #2c2c2c; /* Colore di sfondo delle righe pari */
-}
-
 tr:hover {
     background-color: #454545; /* Colore di sfondo al passaggio del mouse */
 }
@@ -77,6 +73,19 @@ tr:hover {
 /* Aggiungi effetto di transizione al cambio di colore */
 tr {
     transition: background-color 0.3s ease;
+    background-color: #2c2c2c;
+}
+
+tr:nth-child(1) {
+    color: gold; /* Colore oro per la prima riga */
+}
+
+tr:nth-child(2) {
+    color: silver; /* Colore argento per la seconda riga */
+}
+
+tr:nth-child(3) {
+    color: #cd7f32; /* Colore bronzo per la terza riga */
 }
 
 /* Home Button Styles */

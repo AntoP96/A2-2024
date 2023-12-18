@@ -1,40 +1,37 @@
 const apiHistory = "http://fastapi:8000/matchHistory";
 const apiNameSurnamebyId = "/getNameSurnameById?id={idGiocatore}";
 
-document.addEventListener("DOMContentLoaded", function() {
-    populateHistory();
-});
-
-// Funzione principale per ottenere lo storico partite e popolare la tabella HTML
-async function populateHistory() {
+async function populateHistory(idGiocatore) {
     try {
-        const response = await axios.get(apiHistory);
+        const response = await axios.get(`${apiHistory}?idGiocatore=${idGiocatore}`);
         const historyData = response.data.data.matches;
 
         const historyBody = document.getElementById("historyBody");
 
+        // Clear existing rows
+        historyBody.innerHTML = "";
+
         for (const match of historyData) {
-            const nomeCognome = await getNomeCognomeById(match.idGiocatore);
             const winnerInfo = await getWinnerInfo(match.winner);
 
             // Mappa l'array di robot per ottenere tutti i nomi
             const robotNames = match.robots.map(robot => robot.name).join(", ");
 
             const row = createTableRow([
-                nomeCognome,
+                match.match_id,
                 robotNames,
                 match.duration,
+                match.classeTestata,
                 match.difficulty,
                 winnerInfo,
                 match.scoreGiocatore,
                 match.scoreRobot,
-                match.classeTestata,
-                match.date,
+                match.dateStart,
+                match.dateEnd,
             ]);
 
             historyBody.appendChild(row);
         }
-
     } catch (error) {
         console.error("Errore durante la richiesta API dello storico partite:", error);
     }
@@ -72,6 +69,44 @@ function createTableRow(dataArray) {
     });
     return row;
 }
+
+function extractIdFromToken() {
+    const token = getCookie("jwt");
+    if (token) {
+        const payload = parseJwt(token);
+        //console.log("Contenuto JWT:", payload);
+        if (payload) {
+            const userId = payload.userId;
+            //console.log("ID dell'utente estratto dal JWT:", userId);
+            return userId;
+        }
+    }
+    return null;
+}
+
+const getCookie = (name) => {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+const parseJwt = (token) => {
+    try {
+        return JSON.parse(atob(token.split('.')[1]));
+    } catch (e) {
+        return null;
+    }
+};
+
+document.addEventListener("DOMContentLoaded", (e) => {
+    const idGiocatore = extractIdFromToken();
+    if (idGiocatore) {
+        populateHistory(idGiocatore);
+    } else {
+        console.error("IdGiocatore non valido.");
+    }
+});
 
 function redirectToHome() {
     window.location.href = "/options";
