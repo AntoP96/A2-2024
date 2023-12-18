@@ -12,6 +12,7 @@ async function populateRanking() {
     const classificaData = response.data.data.ranking;
 
     const classificaBody = document.getElementById('classificaBody');
+    classificaBody.innerHTML = '';
 
     for (const giocatore of classificaData) {
       const nomeCognome = await getNomeCognomeById(giocatore.idGiocatore);

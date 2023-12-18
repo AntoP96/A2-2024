@@ -31,8 +31,8 @@ body::before {
     border: 3px solid #666;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
     padding: 10px;
-    width: 800px; /* Imposta la larghezza fissa desiderata */
-    height: 500px; /* Imposta l'altezza fissa desiderata */
+    width: 800px;
+    height: 500px;
     margin: auto;
     position: absolute;
     top: 50%;
@@ -65,30 +65,46 @@ th, td {
 
 th {
     background-color: #acacac;
-    color: rgba(57, 57, 83, 1); /* Colore del testo dell'intestazione */
-    font-weight: bold; /* Imposta il testo in grassetto */
+    color: rgba(57, 57, 83, 1);
+    font-weight: bold;
 }
 
 tr:hover {
-    background-color: #454545; /* Colore di sfondo al passaggio del mouse */
+    background-color: #454545; 
 }
 
 /* Regole per cambiare il colore del testo anziché il background */
 tr:nth-child(1) {
-    color: gold; /* Colore oro per la prima riga */
+    color: gold;
 }
 
 tr:nth-child(2) {
-    color: silver; /* Colore argento per la seconda riga */
+    color: silver;
 }
 
 tr:nth-child(3) {
-    color: #cd7f32; /* Colore bronzo per la terza riga */
+    color: #cd7f32;
 }
 
 /* Aggiungi effetto di transizione al cambio di colore */
 tr {
     transition: background-color 0.3s ease;
+}
+
+tr:first-child td:first-child {
+    position: relative;
+}
+
+tr:first-child td:first-child::before {
+    content: "\1F451"; 
+    font-family: 'FontAwesome'; 
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: gold;
+    margin-right: 5px;
 }
 
 /* Home Button Styles */
@@ -113,7 +129,7 @@ tr {
 
 .home-button i {
     margin-right: 5px;
-    font-size: 16px; /* Imposta la dimensione dell'icona uguale alla dimensione del testo */
+    font-size: 16px;
 }
 
 .home-button:focus {

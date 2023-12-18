@@ -108,6 +108,19 @@ def generate_matches_data():
                 },
                 {
                     "match_id": "4",
+                    "idGiocatore": 2,
+                    "robots": [{"name": "Randoop"}],
+                    "classeTestata": "Calcolatrice",
+                    "duration": "00:42:05",
+                    "difficulty": "medium",
+                    "winner": 2,
+                    "scoreGiocatore": 82,
+                    "scoreRobot": 80,
+                    "dateStart": "2023-12-19 11:23:04",
+                    "dateEnd": "2023-12-19 12:05:09",
+                },
+                {
+                    "match_id": "5",
                     "idGiocatore": 3,
                     "robots": [{"name": "Randoop"}],
                     "classeTestata": "Calcolatrice",
@@ -120,7 +133,7 @@ def generate_matches_data():
                     "dateEnd": "2023-12-18 12:05:10",
                 },
                 {
-                    "match_id": "5",
+                    "match_id": "6",
                     "idGiocatore": 3,
                     "robots": [{"name": "Randoop"}],
                     "classeTestata": "Calcolatrice",
