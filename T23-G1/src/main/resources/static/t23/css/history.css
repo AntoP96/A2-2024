@@ -60,7 +60,13 @@ th, td {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: auto;
+    width: auto; /* Rimuovi la larghezza fissa delle colonne */
+}
+
+@media (max-width: 1200px) {
+    th, td {
+        width: auto;
+    }
 }
 
 th {
@@ -70,19 +76,12 @@ th {
 }
 
 tr:hover {
-    background-color: #2e2e2e; /* Colore di sfondo al passaggio del mouse */
+    background-color: #454545; /* Colore di sfondo al passaggio del mouse */
 }
 
 /* Aggiungi effetto di transizione al cambio di colore */
 tr {
     transition: background-color 0.3s ease;
-}
-
-/* Regola aggiuntiva per ridurre la larghezza delle colonne se necessario */
-@media (max-width: 1200px) {
-    th, td {
-        width: auto;
-    }
 }
 
 /* Home Button Styles */

@@ -12,7 +12,6 @@ A usage guide is available at https://testing-game-sad-2023.github.io/T4-G18/
 A live demo is available on https://sad.capass.org
 
 ## Configuring Grafana and Prometheus
-
 1. Navigate to the page http://localhost:3300 and log in with the credentials `admin` `admin` (skip the password change).
 2. Click on `add data source` on the `home` page.
 3. From the list, select `Prometheus`, enter the URL: `http://prometheus:9090`, and click `Save and Test` at the bottom of the page.
