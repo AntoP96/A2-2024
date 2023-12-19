@@ -1,4 +1,4 @@
-const apiClassifica = 'http://fastapi:8000/ranking';
+const apiClassifica = 'http://localhost:8000/ranking';
 const apiNameSurnamebyId = '/getNameSurnameById?id={idGiocatore}';
 
 document.addEventListener("DOMContentLoaded", function() {

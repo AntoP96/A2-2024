@@ -1,4 +1,4 @@
-const apiHistory = "http://fastapi:8000/matchHistory";
+const apiHistory = "http://localhost:8000/matchHistory";
 const apiNameSurnamebyId = "/getNameSurnameById?id={idGiocatore}";
 
 document.addEventListener("DOMContentLoaded", (e) => {
