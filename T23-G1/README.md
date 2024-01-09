@@ -42,3 +42,6 @@ All'atto dell'autenticazione, lo studente fornirà l'indirizzo e-mail fornito pe
   <li>Lanciare la build dell'immagine: <code>docker compose up -d --build</code></li>
 </ol>
 
+# VIDEO DIMOSTRAZIONE
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SOm-hs1gaKo?si=8kULRI_jDvWiM7p_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
