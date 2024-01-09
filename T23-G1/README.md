@@ -44,4 +44,4 @@ All'atto dell'autenticazione, lo studente fornirà l'indirizzo e-mail fornito pe
 
 # VIDEO DIMOSTRAZIONE
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/SOm-hs1gaKo?si=8kULRI_jDvWiM7p_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+[![Video Dimostrazione](https://img.youtube.com/vi/SOm-hs1gaKo/0.jpg)](https://youtu.be/SOm-hs1gaKo)
