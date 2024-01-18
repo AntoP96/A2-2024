@@ -42,6 +42,10 @@ All'atto dell'autenticazione, lo studente fornirà l'indirizzo e-mail fornito pe
   <li>Lanciare la build dell'immagine: <code>docker compose up -d --build</code></li>
 </ol>
 
+## Nuovo Microservizio FastAPI per il Popolamento delle Tabelle di Storico Partite e Classifica Giocatori
+Nel progetto complessivo, è stato integrato un nuovo microservizio basato su FastAPI dedicato al popolamento delle tabelle di storico delle partite e della classifica dei giocatori. Questo microservizio è puramente illustrativo, poiché le API originariamente disponibili non consentivano di recuperare tutti i dati necessari per popolare le suddette tabelle.
+Al momento della modifica del database T4 (consultare il capitolo sulla proposta di modifica del database T4) e la creazione delle nuove API secondo lo schema Swagger API (consultare il capitolo sulle API), sarà possibile eliminare il microservizio FastAPI (eliminare il microservizio anche dall'<code>installer.bat</code>). Le nuove API potranno quindi sostituire il microservizio nelle pagine <code>ranking.js</code> (API classifica giocatori) e <code>history.js</code> (API storico partite).
+
 # VIDEO DIMOSTRAZIONE
 
 [![Video Dimostrazione](https://img.youtube.com/vi/SOm-hs1gaKo/0.jpg)](https://youtu.be/SOm-hs1gaKo)
