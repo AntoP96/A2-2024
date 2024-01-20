@@ -5,7 +5,6 @@ FROM python:3.8-slim
 WORKDIR /app
 
 # Copia i file necessari nell'immagine
-COPY requirements.txt .
 COPY exampleAPI.py .
 
 # Installa le dipendenze
